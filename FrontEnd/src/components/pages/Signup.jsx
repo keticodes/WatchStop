@@ -1,59 +1,62 @@
 import React, { useState } from "react";
+import Input from "../input";
+import Button from "../button";
 
+const apiUrl = "http://localhost:3001/api/users";
 const Signup = () => {
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
+  // State variables for input values
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phonenumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(name, lastName, email, phone, password);
+    const user = { firstname, lastname, email, phonenumber };
+
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const json = await response.json();
+
+    if (!response.ok) {
+      console.log("Error");
+    }
+    if (response.ok) {
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhoneNumber("");
+      console.log("new user added:", json);
+    }
   };
 
   return (
-    <form className="signup" onSubmit={handleSubmit}>
-      <h3>Sign Up</h3>
-
-      <label>Name:</label>
-      <input
-        type="text"
-        onChange={(e) => setName(e.target.value)}
-        value={name}
-      />
-
-      <label>Last Name:</label>
-      <input
-        type="text"
-        onChange={(e) => setLastName(e.target.value)}
-        value={lastName}
-      />
-
-      <label>Email address:</label>
-      <input
-        type="email"
-        onChange={(e) => setEmail(e.target.value)}
-        value={email}
-      />
-
-      <label>Phone:</label>
-      <input
-        type="tel"
-        onChange={(e) => setPhone(e.target.value)}
-        value={phone}
-      />
-
-      <label>Password:</label>
-      <input
-        type="password"
-        onChange={(e) => setPassword(e.target.value)}
-        value={password}
-      />
-
-      <button>Sign up</button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <Input text="First-name" value={firstname} setValue={setFirstName} />
+        <Input text="Last-name" value={lastname} setValue={setLastName} />
+        <Input text="Email" value={email} setValue={setEmail} />
+        <Input
+          text="Phone-number"
+          value={phonenumber}
+          setValue={setPhoneNumber}
+        />
+        <Input
+          text="Password"
+          password={true}
+          value={password}
+          setValue={setPassword}
+        />
+        <Button text="Signup" type="submit" />
+      </form>
+    </>
   );
 };
 

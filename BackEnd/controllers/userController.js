@@ -10,7 +10,13 @@ const createUser = async (req, res) => {
   }
   try {
     const userId = Date.now();
-    const user = await User.create({ firstname, lastname, email, phonenumber, userId });
+    const user = await User.create({
+      firstname,
+      lastname,
+      email,
+      phonenumber,
+      userId,
+    });
     res.status(201).json(user);
   } catch (error) {
     res.status(500).json({ message: "The user could not be created" });
