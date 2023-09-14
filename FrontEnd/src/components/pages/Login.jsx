@@ -1,4 +1,7 @@
 import { useState } from "react";
+import Input from "../Elements/input";
+import Button from "../Elements/button";
+import "../css/login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -8,27 +11,26 @@ const Login = () => {
     e.preventDefault();
 
     console.log(email, password);
+    setEmail("");
+    setPassword("");
   };
 
   return (
-    <form className="login" onSubmit={handleSubmit}>
-      <h3>Log In</h3>
-
-      <label>Email address:</label>
-      <input
-        type="email"
-        onChange={(e) => setEmail(e.target.value)}
-        value={email}
-      />
-      <label>Password:</label>
-      <input
-        type="password"
-        onChange={(e) => setPassword(e.target.value)}
-        value={password}
-      />
-
-      <button>Log in</button>
-    </form>
+    <div id="Login-wrapper">
+      <form id="Login-form" onSubmit={handleSubmit}>
+        <div className="Login-content">
+          <h1>LOGIN</h1>
+          <Input text="Email" value={email} setValue={setEmail} />
+          <Input
+            text="Password"
+            password={true}
+            value={password}
+            setValue={setPassword}
+          />
+          <Button text="LOGIN" />
+        </div>
+      </form>
+    </div>
   );
 };
 
