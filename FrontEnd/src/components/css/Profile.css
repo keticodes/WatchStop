@@ -1,0 +1,21 @@
+#Profile-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+.Profile-content {
+  width: 500px;
+  display: flex;
+  gap: 33px;
+  flex-direction: column;
+}
+.input input {
+  max-width: 500px;
+}
+#Profile-wrapper h1 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5%;
+  font-family: Mulish;
+}
