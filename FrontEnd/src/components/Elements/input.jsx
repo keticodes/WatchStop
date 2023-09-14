@@ -1,11 +1,9 @@
 import { useState } from "react";
-
+import "../css/input.css";
 const Input = ({ text, password, value, setValue }) => {
   return (
     <div className="input">
-      <label htmlFor={password ? "passwordInput" : "textInput"}>
-        {password ? "Password" : text}:
-      </label>
+      <label htmlFor={password ? "passwordInput" : "textInput"}></label>
       <input
         type={password ? "password" : "text"}
         id={password ? "passwordInput" : text}

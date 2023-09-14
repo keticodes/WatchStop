@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Input from "../input";
-import Button from "../button";
-
+import Input from "../Elements/input";
+import Button from "../Elements/button";
+import "../css/signup.css";
 const apiUrl = "http://localhost:3001/api/users";
 const Signup = () => {
   // State variables for input values
@@ -38,25 +38,28 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <Input text="First-name" value={firstname} setValue={setFirstName} />
-        <Input text="Last-name" value={lastname} setValue={setLastName} />
-        <Input text="Email" value={email} setValue={setEmail} />
-        <Input
-          text="Phone-number"
-          value={phonenumber}
-          setValue={setPhoneNumber}
-        />
-        <Input
-          text="Password"
-          password={true}
-          value={password}
-          setValue={setPassword}
-        />
-        <Button text="Signup" type="submit" />
+    <div id="signup-wrapper">
+      <h1>REGISTER</h1>
+      <form onSubmit={handleSubmit} id="Signup-form">
+        <div className="Signup-content">
+          <Input text="First-name" value={firstname} setValue={setFirstName} />
+          <Input text="Last-name" value={lastname} setValue={setLastName} />
+          <Input text="Email" value={email} setValue={setEmail} />
+          <Input
+            text="Phone-number"
+            value={phonenumber}
+            setValue={setPhoneNumber}
+          />
+          <Input
+            text="Password"
+            password={true}
+            value={password}
+            setValue={setPassword}
+          />
+          <Button text="SIGNUP" type="submit" />
+        </div>
       </form>
-    </>
+    </div>
   );
 };
 
