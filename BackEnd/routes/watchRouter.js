@@ -9,10 +9,10 @@ const {
 
 const router = express.Router();
 
-router.get("/watches", getWatches);
-router.get("/watches:id", getWatch);
-router.post("/watches", createWatch);
-router.delete("/watches:id", deleteWatch);
-router.put("/watches:id", updateWatch);
+router.get("/", getWatches);
+router.get("/:id", getWatch);
+router.post("/", createWatch);
+router.delete("/:id", deleteWatch);
+router.put("/:id", updateWatch);
 
 module.exports = router;
