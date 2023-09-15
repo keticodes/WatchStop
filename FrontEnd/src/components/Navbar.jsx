@@ -10,7 +10,7 @@ const Navbar = () => {
     <div className="Navbar-wrapper">
       <div className="Navbar-hamburger">
         <button>
-          <img src="./public/hamburger.svg" height="40px" width="40px" alt="" />
+          <img src="./hamburger.svg" height="40px" width="40px" alt="" />
         </button>
       </div>
       <div className="Navbar-title">
