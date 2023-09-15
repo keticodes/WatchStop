@@ -2,20 +2,19 @@ const User = require("../models/userModel");
 const mongoose = require("mongoose");
 
 const createUser = async (req, res) => {
-  const { firstname, lastname, email, phonenumber } = req.body;
-  if (!firstname || !lastname || !email || !phonenumber) {
+  const { firstname, lastname, email, phonenumber, password } = req.body;
+  if (!firstname || !lastname || !email || !phonenumber || !password) {
     return res
       .status(400)
       .json({ message: "Please provide all the required information" });
   }
   try {
-    const userId = Date.now();
     const user = await User.create({
       firstname,
       lastname,
       email,
       phonenumber,
-      userId,
+      password,
     });
     res.status(201).json(user);
   } catch (error) {

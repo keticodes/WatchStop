@@ -14,7 +14,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const user = { firstname, lastname, email, phonenumber };
+    const user = { firstname, lastname, email, phonenumber, password };
 
     const response = await fetch(apiUrl, {
       method: "POST",
@@ -33,6 +33,7 @@ const Signup = () => {
       setLastName("");
       setEmail("");
       setPhoneNumber("");
+      setPassword("");
       console.log("new user added:", json);
     }
   };
