@@ -1,21 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import "../components/css/navbar.css";
 
 const Navbar = () => {
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/login";
+  const isRegisterPage = location.pathname === "/signup";
+
   return (
-    <header>
-      <div className="container">
-        <Link to="/">
-          <h1>WatchStop</h1>
-        </Link>
-        <nav>
-          <div>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
-            <Link to="/profile">Profile</Link>
-          </div>
-        </nav>
+    <div className="Navbar-wrapper">
+      <div className="Navbar-hamburger">
+        <h1>-</h1>
       </div>
-    </header>
+      <div className="Navbar-title">
+        <Link to="/">
+          <h1>WATCHSTOP</h1>
+        </Link>
+      </div>
+      <div className="Navbar-text">
+        <Link to="/login" className={isLoginPage ? "blue-text" : ""}>
+          LOGIN
+        </Link>
+        <h1>/</h1>
+        <Link to="/signup" className={isRegisterPage ? "blue-text" : ""}>
+          REGISTER
+        </Link>
+      </div>
+    </div>
   );
 };
 
