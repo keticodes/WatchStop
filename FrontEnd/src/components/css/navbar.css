@@ -1,16 +1,39 @@
+body {
+  margin: 0px;
+}
 .Navbar-wrapper {
   display: flex;
   align-items: center;
   gap: 10px;
-  justify-content: space-between;
   border-bottom: 7px solid #d4d4d4;
   background: #02111b;
+  height: 80px;
+}
+.Navbar-hamburger {
+  position: absolute;
+  float: left;
+  z-index: 1;
+  margin-left: 10px;
+}
+.Navbar-hamburger button {
+  background: none;
+  border: 0px;
+}
+.Navbar-hamburger button:hover {
+  cursor: pointer;
+}
+.Navbar-title {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100vw;
 }
 .Navbar-title h1 {
   color: black;
   text-decoration: none;
-  margin-left: 6em;
   color: white;
+  text-align: left;
+  text-align: center;
 }
 .Navbar-wrapper a {
   text-decoration: none;
@@ -21,6 +44,8 @@
 }
 .Navbar-text {
   display: flex;
+  position: absolute;
+  right: 0;
   justify-content: space-between;
   gap: 10px;
   margin-right: 20px;

@@ -9,7 +9,9 @@ const Navbar = () => {
   return (
     <div className="Navbar-wrapper">
       <div className="Navbar-hamburger">
-        <h1>-</h1>
+        <button>
+          <img src="./public/hamburger.svg" height="40px" width="40px" alt="" />
+        </button>
       </div>
       <div className="Navbar-title">
         <Link to="/">
