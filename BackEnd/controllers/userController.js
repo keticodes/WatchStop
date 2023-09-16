@@ -5,10 +5,14 @@ const createUser = async (req, res) => {
   const { firstname, lastname, email, phonenumber, password } = req.body;
   if (!firstname || !lastname || !email || !phonenumber || !password) {
     return res
-      .status(400)
+      .status(404)
       .json({ message: "Please provide all the required information" });
   }
   try {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
+    }
     const user = await User.create({
       firstname,
       lastname,

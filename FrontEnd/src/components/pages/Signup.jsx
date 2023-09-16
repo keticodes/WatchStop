@@ -24,9 +24,14 @@ const Signup = () => {
       },
     });
     const json = await response.json();
-
-    if (!response.ok) {
-      console.log("Error");
+    if (response.status === 400) {
+      console.log("User already exists");
+    }
+    if (response.status === 500) {
+      console.log("Error creating user");
+    }
+    if (response.status === 404) {
+      console.log("Please provide all the required fields");
     }
     if (response.ok) {
       setFirstName("");
@@ -34,7 +39,7 @@ const Signup = () => {
       setEmail("");
       setPhoneNumber("");
       setPassword("");
-      console.log("new user added:", json);
+      console.log("Successfully registered:", json);
     }
   };
 
