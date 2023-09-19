@@ -1,6 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Input from "../Elements/input";
 import Button from "../Elements/button";
+import { GoogleLogin } from "react-google-login"; // Import Google Login component
 import "../css/login.css";
 
 const apiUrl = "http://localhost:3001/api/users/login";
@@ -45,6 +46,35 @@ const Login = () => {
     setPassword("");
   };
 
+  const handleGoogleLogin = () => {
+    // Implement Google login logic here
+    // You can use the Google Sign-In API or a library like react-google-login
+  };
+
+  const handleGoogleResponse = (googleResponse) => {
+    // Handle the successful Google login here
+    if (googleResponse.profileObj) {
+      const userData = {
+        email: googleResponse.profileObj.email,
+        // You can send other user information as needed
+      };
+
+      // Send the user data to your server for authentication if required
+      // ...
+
+      // Optionally, you can redirect the user after successful login
+      // window.location.href = "/dashboard";
+    } else {
+      // Handle Google login failure
+      console.error("Google login failed");
+    }
+  };
+
+  const handleGoogleFailure = (error) => {
+    // Handle Google login failure
+    console.error("Google login failed with error:", error);
+  };
+
   return (
     <div id="Login-wrapper">
       <form id="Login-form" onSubmit={handleSubmit}>
@@ -58,6 +88,15 @@ const Login = () => {
             setValue={setPassword}
           />
           <Button text="LOGIN" />
+         
+          {/* Google Login using react-google-login */}
+          <GoogleLogin
+            clientId="570931366977-ocsnkvamfsmpro5pm8hdo315pintncek.apps.googleusercontent.com"
+            buttonText="Login with Google"
+            onSuccess={handleGoogleResponse}
+            onFailure={handleGoogleFailure}
+            cookiePolicy={"single_host_origin"}
+          />
         </div>
       </form>
     </div>

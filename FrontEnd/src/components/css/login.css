@@ -206,3 +206,14 @@ a.forgot {
   margin-bottom: 5%;
   font-family: Mulish;
 }
+
+/* Add this CSS class to control the image size */
+.GoogleLogo {
+  width: 30%; 
+  resize: 50%;/* Adjust the size as needed */
+  height: auto; 
+  text-align: right;
+  font-family: Mulish;
+
+  /* Maintain the aspect ratio */
+}
