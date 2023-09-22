@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { SideMenu } from "./Sidemenu";
+import openMenu from "../../src/assets/menu.svg";
+import closeMenu from "../../src/assets/close-menu.svg";
+import "../components/css/sidemenu.css";
 import "../components/css/navbar.css";
-import { SideMenu } from './Sidemenu'
-import "../components/css/sidemenu.css"
 
 const Navbar = () => {
   const location = useLocation();
@@ -19,26 +21,26 @@ const Navbar = () => {
     <div className="Navbar-wrapper">
       <div className="Navbar-hamburger">
         <button onClick={showSidebar}>
-          <img src="./hamburger.svg" height="40px" width="40px" alt="" />
+          {sidebar ? (
+            <img src={closeMenu} height="40px" width="40px" alt="" />
+          ) : (
+            <img src={openMenu} height="40px" width="40px" alt="" />
+          )}
         </button>
       </div>
-      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-            <ul className='nav-menu-items' onClick={showSidebar}>
-              <li className='navbar-toggle'>
-                <Link to ='#' className='menu-bars'>
+      <div className={sidebar ? "nav-menu active" : "nav-menu"}>
+        <div className="nav-menu-content" onClick={showSidebar}>
+          {SideMenu.map((item, index) => {
+            return (
+              <li key={index} className={item.cName}>
+                <Link to={item.path}>
+                  <span>{item.title}</span>
                 </Link>
               </li>
-              {SideMenu.map((item,index) => {
-                return (
-                  <li key={index} className={item.cName}>
-                    <Link to={item.path}>
-                      <span>{item.title}</span>
-                    </Link>
-                  </li>
-                )
-              })}
-            </ul>
-          </nav>
+            );
+          })}
+        </div>
+      </div>
       <div className="Navbar-title">
         <Link to="/">
           <h1>WATCHSTOP</h1>

@@ -1,20 +1,19 @@
-import React from 'react'
+import React from "react";
 
- export const SideMenu = [
-    {
-        title: 'Home',
-        path: '/',
-        cName: 'nav-text'
-    },
-    {
-        title: 'Watches',
-        path: '/watches',
-        cName: 'nav-text'
-    },
-    {
-        title: 'About us',
-        path: '/about',
-        cName: 'nav-text'
-    },
-]
-
+export const SideMenu = [
+  {
+    title: "HOME",
+    path: "/",
+    cName: "nav-text",
+  },
+  {
+    title: "WATCHES",
+    path: "/watches",
+    cName: "nav-text",
+  },
+  {
+    title: "ABOUT US",
+    path: "/about",
+    cName: "nav-text",
+  },
+];
