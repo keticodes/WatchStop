@@ -29,19 +29,24 @@ const Login = () => {
       });
 
       if (response.ok) {
-        // Handle successful login, e.g., redirect to another page
         console.log("Login successful");
-        // Optionally, you can redirect the user to another page
-        // window.location.href = "/dashboard";
+        response.json().then((result) => {
+          console.log(result);
+          localStorage.setItem(
+            "login",
+            JSON.stringify({
+              login: true,
+              token: result.token,
+              user: result.user,
+            })
+          );
+        });
       } else {
-        // Handle login failure, e.g., display an error message
         console.error("Login failed");
       }
     } catch (error) {
       console.error("An error occurred during login:", error);
     }
-
-    // Clear the email and password fields
     setEmail("");
     setPassword("");
   };
@@ -88,7 +93,7 @@ const Login = () => {
             setValue={setPassword}
           />
           <Button text="LOGIN" />
-         
+
           {/* Google Login using react-google-login */}
           <GoogleLogin
             clientId="570931366977-ocsnkvamfsmpro5pm8hdo315pintncek.apps.googleusercontent.com"
