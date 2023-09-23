@@ -21,12 +21,11 @@
   position: fixed;
   top: 80px;
   left: -100%;
-  transition: 850ms;
 }
 
 .nav-menu.active {
   left: 0;
-  transition: 350ms;
+  animation: transformAnimation 500ms ease-out;
 }
 
 .nav-text {
@@ -62,4 +61,15 @@
 .nav-menu-items  {
   width: 100%;
   display: flex;
+}
+
+/* Animations */
+@keyframes transformAnimation {
+  from {
+    transform: translate(-100px, 0px);
+  }
+
+  to {
+    transform: translate(0px, 0px);
+  }
 }
