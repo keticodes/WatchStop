@@ -1,0 +1,34 @@
+.slider-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 2.5% 0%;
+  height: 81vh;
+  align-items: center;
+  width: 100%;
+}
+.slider-content-wrapper {
+  display: flex;
+  align-items: center;
+}
+.slider-wrapper button {
+  background: none;
+  border: none;
+}
+.slider-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.slider-next img:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+.slider-prev img:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+.slider-content h1 {
+  text-align: center;
+  max-width: 900px;
+}

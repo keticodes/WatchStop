@@ -1,8 +1,10 @@
 import "../css/home.css";
+import Slider from "../Elements/slider";
+import { watchData } from "../data/watchData";
 const Home = () => {
   return (
     <div id="Home-page-wrapper">
-      <h1>This is homepage</h1>
+      <Slider itemData={watchData} />
     </div>
   );
 };
