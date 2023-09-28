@@ -1,18 +1,19 @@
 const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
 
 const authenticateUser = (req, res, next) => {
-  const token = req.header("Authorization");
+  cookieParser()(req, res, () => {});
+  const token = req.cookies.Authorization;
 
-  if (!token) {
-    return res.status(401).json({ message: "Authentication failed" });
-  }
-
-  try {
-    const decoded = jwt.verify(token, "banana"); //This is no good. Should create stronger secret key later.
-    req.user = decoded; // Store the user object in the request for later use
-    next(); // Continue to the next middleware or route
-  } catch (error) {
-    return res.status(401).json({ message: "Authentication failed" });
+  if (token) {
+    try {
+      jwt.verify(token, process.env.JWT_SECRET);
+      next();
+    } catch (error) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+  } else {
+    return res.status(401).json({ message: "Unauthorized" });
   }
 };
 

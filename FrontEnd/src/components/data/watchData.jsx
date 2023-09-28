@@ -1,4 +1,3 @@
-import rolex from "../../../public/watches/rolex-yach-master-2.png";
 export const watchData = [
   {
     text: "The Rolex Yacht-Master II: Eccentricity Outside, Complexity Inside",
