@@ -7,18 +7,22 @@ import user from "../../src/assets/user.svg";
 import "../components/css/sidemenu.css";
 import "../components/css/navbar.css";
 import useAuth from "./Hooks/useAuth";
+import useLogout from "./Hooks/useLogout";
 
 const Navbar = () => {
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
   const isRegisterPage = location.pathname === "/signup";
   const [sidebar, setSidebar] = useState(false);
+  const auth = useAuth();
 
   const showSidebar = () => {
     console.log("Hamburger button clicked");
     setSidebar(!sidebar);
   };
-  const auth = useAuth();
+  const handleLogout = () => {
+    useLogout();
+  };
 
   return (
     <div className="Navbar-wrapper">
@@ -33,15 +37,18 @@ const Navbar = () => {
       </div>
       <div className={sidebar ? "nav-menu active" : "nav-menu"}>
         <div className="nav-menu-content" onClick={showSidebar}>
-          {SideMenu.map((item, index) => {
-            return (
-              <li key={index} className={item.cName}>
-                <Link to={item.path}>
-                  <span>{item.title}</span>
-                </Link>
-              </li>
-            );
-          })}
+          {SideMenu.map((item, index) => (
+            <li key={index} className={item.cName}>
+              <Link to={item.path}>
+                <span>{item.title}</span>
+              </Link>
+            </li>
+          ))}
+          {auth && (
+            <li className="nav-text" onClick={handleLogout}>
+              <span>LOGOUT</span>
+            </li>
+          )}
         </div>
       </div>
       <div className="Navbar-title">
@@ -49,23 +56,23 @@ const Navbar = () => {
           <h1>WATCHSTOP</h1>
         </Link>
       </div>
-      {!auth ? (
-        <div className="Navbar-text">
-          <Link to="/login" className={isLoginPage ? "blue-text" : ""}>
-            LOGIN
-          </Link>
-          <h1>/</h1>
-          <Link to="/signup" className={isRegisterPage ? "blue-text" : ""}>
-            REGISTER
-          </Link>
-        </div>
-      ) : (
-        <div className="Navbar-text">
+      <div className="Navbar-text">
+        {auth ? (
           <Link to="/profile">
             <img src={user} alt="" />
           </Link>
-        </div>
-      )}
+        ) : (
+          <>
+            <Link to="/login" className={isLoginPage ? "blue-text" : ""}>
+              LOGIN
+            </Link>
+            <h1>/</h1>
+            <Link to="/signup" className={isRegisterPage ? "blue-text" : ""}>
+              REGISTER
+            </Link>
+          </>
+        )}
+      </div>
     </div>
   );
 };
