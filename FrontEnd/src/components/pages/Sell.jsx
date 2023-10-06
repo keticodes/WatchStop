@@ -40,7 +40,7 @@ const Sell = () => {
     setDescription("");
     setPrice("");
     setCity("");
-    setBannerUrl(CameraImage); // Reset to your default image
+    setBannerUrl(CameraImage); 
   };
 
   return (
