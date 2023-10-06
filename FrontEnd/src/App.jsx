@@ -5,6 +5,7 @@ import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
 import Profile from "./components/pages/Profile";
 import Navbar from "./components/Navbar";
+import ProtectedRoute from "./protectedRouter";
 
 function App() {
   return (
@@ -16,7 +17,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={<ProtectedRoute element={<Profile />} />}
+            />
           </Routes>
         </div>
       </BrowserRouter>
