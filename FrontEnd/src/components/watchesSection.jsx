@@ -10,9 +10,9 @@ const WatchesSection = () => {
   const randomImageURL = getRandomImage();
 
   return (
-    <div id="watches-section">
+    <div id="Watches-section">
       <div className="watches-section-title">
-        <h2>Watches</h2>
+        <h2>WATCHES</h2>
       </div>
       <div className="watches-section-content">
         <img src={randomImageURL} alt="Watch 1" />
