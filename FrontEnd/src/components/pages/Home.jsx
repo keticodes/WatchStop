@@ -1,6 +1,6 @@
 import "../css/home.css";
 import Slider from "../Elements/slider";
-import Footer from "../Elements/footer";
+import Footer from "../footer";
 import { watchData } from "../data/watchData";
 const Home = () => {
   return (

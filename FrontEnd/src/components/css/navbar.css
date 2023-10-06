@@ -26,7 +26,7 @@ body {
   display: flex;
   justify-content: center;
   position: absolute;
-  width: 100vw;
+  width: 99vw;
 }
 .Navbar-title h1 {
   color: black;
