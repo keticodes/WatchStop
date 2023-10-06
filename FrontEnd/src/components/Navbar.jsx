@@ -3,8 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import { SideMenu } from "./Sidemenu";
 import openMenu from "../../src/assets/menu.svg";
 import closeMenu from "../../src/assets/close-menu.svg";
+import user from "../../src/assets/user.svg";
 import "../components/css/sidemenu.css";
 import "../components/css/navbar.css";
+import useAuth from "./Hooks/useAuth";
 
 const Navbar = () => {
   const location = useLocation();
@@ -16,6 +18,7 @@ const Navbar = () => {
     console.log("Hamburger button clicked");
     setSidebar(!sidebar);
   };
+  const auth = useAuth();
 
   return (
     <div className="Navbar-wrapper">
@@ -46,15 +49,23 @@ const Navbar = () => {
           <h1>WATCHSTOP</h1>
         </Link>
       </div>
-      <div className="Navbar-text">
-        <Link to="/login" className={isLoginPage ? "blue-text" : ""}>
-          LOGIN
-        </Link>
-        <h1>/</h1>
-        <Link to="/signup" className={isRegisterPage ? "blue-text" : ""}>
-          REGISTER
-        </Link>
-      </div>
+      {!auth ? (
+        <div className="Navbar-text">
+          <Link to="/login" className={isLoginPage ? "blue-text" : ""}>
+            LOGIN
+          </Link>
+          <h1>/</h1>
+          <Link to="/signup" className={isRegisterPage ? "blue-text" : ""}>
+            REGISTER
+          </Link>
+        </div>
+      ) : (
+        <div className="Navbar-text">
+          <Link to="/profile">
+            <img src={user} alt="" />
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
