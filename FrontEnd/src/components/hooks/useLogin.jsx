@@ -4,7 +4,7 @@ const useLogin = async (userData) => {
   const apiUrl = "http://localhost:3001/api/users/login";
   try {
     const response = await fetch(apiUrl, {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },

@@ -8,6 +8,9 @@ body {
   border-bottom: 7px solid #d4d4d4;
   background: #02111b;
   height: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 .Navbar-hamburger {
   position: absolute;
