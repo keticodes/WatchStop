@@ -1,23 +1,7 @@
 const User = require("../models/userModel");
-const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-
-const createToken = (id, res) => {
-  const token = jwt.sign({ userId: id }, process.env.JWT_SECRET);
-  if (res) {
-    res.cookie("Authorization", token, {
-      httpOnly: true,
-      expires: new Date(Date.now() + 3600000),
-    });
-    return token;
-  }
-};
-
-const getUserId = (req) => {
-  const user = jwt.decode(req.cookies.Authorization, process.env.SECRETKEY);
-  return user.userId;
-};
+const { createToken } = require("../helpers/createToken");
+const { getUserId } = require("../helpers/getUserId");
 
 const createUser = async (req, res) => {
   const { firstname, lastname, email, phonenumber, password } = req.body;
