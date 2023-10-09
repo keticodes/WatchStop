@@ -23,7 +23,7 @@ function App() {
             />
             <Route
               path="/sell"
-              element={<ProtectedRoute element={<Profile />} />}
+              element={<ProtectedRoute element={<Sell />} />}
             />
           </Routes>
         </div>

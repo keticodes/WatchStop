@@ -5,7 +5,9 @@ const createWatch = async (req, res) => {
   const { name, manufacturer, description } = req.body;
   try {
     if (!name || !manufacturer || !description) {
-      return res.status(400).json({ error: "Please provide all required fields" });
+      return res
+        .status(400)
+        .json({ error: "Please provide all required fields" });
     }
     const id = Date.now();
     const watch = await Watches.create({ name, manufacturer, description, id });

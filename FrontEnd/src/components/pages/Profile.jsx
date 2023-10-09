@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Input from "../Elements/input";
 import Button from "../Elements/button";
 import "../css/Profile.css";
+import useProfile from "../Hooks/useProfile";
 const Signup = () => {
   // State variables for input values
   const [firstname, setFirstName] = useState("");
@@ -18,7 +19,7 @@ const Signup = () => {
     setEmail("");
     setPhoneNumber("");
   };
-
+  const profile = useProfile();
   return (
     <div id="Profile-wrapper">
       <h1>PROFILE</h1>

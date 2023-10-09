@@ -17,6 +17,6 @@ router.post("/login", loginUser);
 router.get("/", authenticateUser, getUsers);
 router.delete("/:id", authenticateUser, deleteUser);
 router.put("/:id", authenticateUser, updateUser);
-router.get("/profile", authenticateUser, getProfile);
+router.get("/profile", getProfile);
 
 module.exports = router;

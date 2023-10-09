@@ -24,7 +24,12 @@ const createUser = async (req, res) => {
     });
     const token = createToken(user._id, res);
     delete user.password;
-    res.status(201).json({ message: "User created successfully", user, token });
+    res.status(201).json({
+      message: "User created successfully",
+      user,
+      token,
+      user_id: user._id,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -42,7 +47,7 @@ const loginUser = async (req, res) => {
 
     const token = createToken(user._id, res);
 
-    res.status(200).json({ token });
+    res.status(200).json({ token, user_id: user._id });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "An error occurred during login" });
@@ -61,12 +66,13 @@ const getUsers = async (req, res) => {
 };
 const getProfile = async (req, res) => {
   try {
+    console.log("req:", req); // Log the req object for debugging
     const userId = getUserId(req);
-    console.log(userId);
+    console.log("userId:", userId); // Log the userId for debugging
     const user = await User.findById(userId).select("-password");
     res.json(user);
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: error.message });
   }
 };
 const deleteUser = async (req, res) => {
