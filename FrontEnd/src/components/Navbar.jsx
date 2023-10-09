@@ -8,9 +8,11 @@ import "../components/css/sidemenu.css";
 import "../components/css/navbar.css";
 import useAuth from "./Hooks/useAuth";
 import useLogout from "./Hooks/useLogout";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isLoginPage = location.pathname === "/login";
   const isRegisterPage = location.pathname === "/signup";
   const [sidebar, setSidebar] = useState(false);
@@ -22,6 +24,7 @@ const Navbar = () => {
   };
   const handleLogout = () => {
     useLogout();
+    navigate("/");
   };
 
   return (
