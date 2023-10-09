@@ -2,13 +2,22 @@ const Watches = require("../models/watchModel");
 const mongoose = require("mongoose");
 
 const createWatch = async (req, res) => {
-  const { name, manufacturer, description } = req.body;
+  const { name, description, imageUrl, price, city } = req.body;
   try {
-    if (!name || !manufacturer || !description) {
-      return res.status(400).json({ error: "Please provide all required fields" });
+    if (!name || !imageUrl || !price || !description || !city) {
+      return res
+        .status(400)
+        .json({ error: "Please provide all required fields" });
     }
     const id = Date.now();
-    const watch = await Watches.create({ name, manufacturer, description, id });
+    const watch = await Watches.create({
+      name,
+      description,
+      imageUrl,
+      price,
+      city,
+      id,
+    });
     res.status(201).json(watch);
   } catch (error) {
     console.error(error);
@@ -17,7 +26,7 @@ const createWatch = async (req, res) => {
 };
 const updateWatch = async (req, res) => {
   const { id } = req.params;
-  const { manufacturer, name, description } = req.body;
+  const { name, description, imageUrl, price, city } = req.body;
   try {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(404).json({ error: "Invalid watch ID" });
@@ -27,8 +36,10 @@ const updateWatch = async (req, res) => {
       return res.status(404).json({ error: "Watch not found" });
     }
     watch.name = name;
-    watch.manufacturer = manufacturer;
     watch.description = description;
+    watch.imageUrl = imageUrl;
+    watch.price = price;
+    watch.city = city;
     await watch.save();
     res.status(200).json(watch);
   } catch (error) {

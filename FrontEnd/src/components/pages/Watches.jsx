@@ -25,9 +25,10 @@ const Watches = () => {
       <div className="Watches">
         {watches.map((watch) => (
           <div key={watch.id} className="Watch">
+            <img src={watch.imageUrl} alt={watch.description} />
             <h3 className="Watch-info">{watch.name}</h3>
-            <h3 className="Watch-info">{watch.manufacturer}</h3>
             <h3 className="Watch-info">{watch.description}</h3>
+            <h3 className="Watch-info">{watch.city}</h3>
             <h3 className="Watch-info">{watch.price}</h3>
           </div>
         ))}
