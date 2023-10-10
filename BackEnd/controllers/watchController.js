@@ -9,14 +9,12 @@ const createWatch = async (req, res) => {
         .status(400)
         .json({ error: "Please provide all required fields" });
     }
-    const id = Date.now();
     const watch = await Watches.create({
       name,
       description,
       imageUrl,
       price,
       city,
-      id,
     });
     res.status(201).json(watch);
   } catch (error) {
