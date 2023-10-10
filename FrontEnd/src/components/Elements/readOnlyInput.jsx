@@ -16,8 +16,9 @@ const ReadOnly = ({ text, password, type, value, setValue, readOnly }) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         readOnly={iseReadOnly}
+        className={iseReadOnly ? "readonly" : ""}
       />
-      <button onClick={toggleReadOnly}>
+      <button type="button" onClick={toggleReadOnly}>
         <img src={editImage} width="40px" height="40px" alt="" />
       </button>
     </div>

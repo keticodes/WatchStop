@@ -70,7 +70,7 @@ const Profile = () => {
             value={password}
             setValue={setPassword}
           />
-          <Button text="SAVE" type="submit" />
+          <Button text="SAVE" onClick={handleSubmit} />
         </div>
       </form>
     </div>

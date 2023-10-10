@@ -20,12 +20,9 @@
   border-radius: 10px;
   border: 1px solid #116262;
 }
-.input input::placeholder {
-  color: black;
-}
-.input input:focus {
-  outline: none;
-}
-.input input:hover {
-  opacity: 80%;
+.input input.readonly {
+  background-color: #f2f2f2; /* Set the background color for read-only input */
+  color: #777; /* Set the text color for read-only input */
+  cursor: not-allowed; /* Change the cursor style for read-only input */
+  /* Add any other styles you want for read-only input */
 }
