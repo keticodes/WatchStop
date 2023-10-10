@@ -3,8 +3,10 @@ import Input from "../Elements/input";
 import Button from "../Elements/button";
 import "../css/Sell.css";
 import CameraImage from "../../assets/camera.svg";
+import useSell from "../Hooks/useSell";
 
 const Sell = () => {
+  const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [city, setCity] = useState("");
@@ -25,14 +27,16 @@ const Sell = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const watchData = {
+      name,
       description,
       price,
       city,
-      BannerImageUrl,
+      imageUrl: BannerImageUrl,
     };
 
     try {
-      console.log("Watch data submitted successfully");
+      const response = await useSell(watchData);
+      console.log("Watch data submitted successfully", response);
     } catch (error) {
       console.error("An error occurred while submitting watch data:", error);
     }
@@ -40,7 +44,7 @@ const Sell = () => {
     setDescription("");
     setPrice("");
     setCity("");
-    setBannerUrl(CameraImage); 
+    setBannerUrl(CameraImage);
   };
 
   return (
@@ -77,8 +81,13 @@ const Sell = () => {
               style={{ display: "none" }}
             />
           </div>
+          <Input text="Name" value={name} setValue={setName} />
           <div className="watch-description">
-            <Input text="Watch Description" value={description} setValue={setDescription} />
+            <Input
+              text="Watch Description"
+              value={description}
+              setValue={setDescription}
+            />
             <Input text="Price" value={price} setValue={setPrice} />
             <Input text="City" value={city} setValue={setCity} />
           </div>

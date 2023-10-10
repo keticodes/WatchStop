@@ -1,0 +1,43 @@
+.Watches {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.Watch-data {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid black;
+  justify-content: space-evenly;
+}
+.Watch-data .Watch-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  text-align: left;
+}
+.Watch {
+  width: 300px;
+  border: 3px solid black;
+  border-radius: 10px;
+}
+.Watch-data .Watch-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.Watches-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+.Watches-page h1 {
+  height: 50px;
+}
