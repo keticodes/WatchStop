@@ -8,6 +8,7 @@ import Sell from "./components/pages/Sell";
 import Watches from "./components/pages/Watches";
 import ProtectedRoute from "./protectedRouter";
 import useAuth from "./components/Hooks/useAuth";
+import React from "react";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -53,6 +54,10 @@ function App() {
                 <Route
                   path="/sell"
                   element={<ProtectedRoute element={<Sell />} />}
+                />
+                <Route
+                  path="/watches"
+                  element={<ProtectedRoute element={<Watches />} />}
                 />
               </>
             )}
