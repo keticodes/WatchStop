@@ -24,9 +24,9 @@ app.use("/api/users", require("./routes/userRouter"));
 
 app.get("/", (req, res) => res.send("Hello"));
 
-logger.info("connecting to", config.MONGO_DATABASE);
+logger.info("connecting to", config.MONGO_URI);
 mongoose
-  .connect(config.MONGO_DATABASE)
+  .connect(config.MONGO_URI)
   .then(() => {
     logger.info("connected to db");
   })

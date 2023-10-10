@@ -7,7 +7,7 @@ const createUser = async (req, res) => {
   const { firstname, lastname, email, phonenumber, password } = req.body;
   if (!firstname || !lastname || !email || !phonenumber || !password) {
     return res
-      .status(404)
+      .status(400)
       .json({ message: "Please provide all the required information" });
   }
   try {
