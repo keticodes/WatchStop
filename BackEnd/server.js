@@ -29,6 +29,7 @@ mongoose
   .connect(config.MONGO_URI)
   .then(() => {
     logger.info("connected to db");
+    console.log(config.MONGO_URI);
   })
   .catch((error) => {
     logger.error(error);

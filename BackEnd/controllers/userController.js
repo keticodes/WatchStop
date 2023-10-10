@@ -88,6 +88,7 @@ const deleteUser = async (req, res) => {
 };
 const updateUser = async (req, res) => {
   const { id } = req.params;
+  console.log("userid from params:", id);
   const { firstname, lastname, email, phonenumber, password } = req.body;
 
   try {
