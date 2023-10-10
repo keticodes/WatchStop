@@ -3,7 +3,7 @@ const cookieParser = require("cookie-parser");
 
 const authenticateUser = (req, res, next) => {
   cookieParser()(req, res, () => {});
-  const token = req.cookies.Authorization;
+  const token = req.cookies.token;
 
   if (token) {
     try {

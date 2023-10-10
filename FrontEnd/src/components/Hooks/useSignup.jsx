@@ -13,6 +13,7 @@ const useSignup = async (userData) => {
     if (response.ok) {
       const result = await response.json();
       Cookies.set("token", result.token, { expires: 1 / 24 });
+      Cookies.set("userId", result.user_id, { expires: 1 / 24 });
       console.log("Signup successful");
       return true;
     } else {

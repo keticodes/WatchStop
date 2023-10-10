@@ -24,7 +24,12 @@ const createUser = async (req, res) => {
     });
     const token = createToken(user._id, res);
     delete user.password;
-    res.status(201).json({ message: "User created successfully", user, token });
+    res.status(201).json({
+      message: "User created successfully",
+      user,
+      token,
+      user_id: user._id,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -42,7 +47,7 @@ const loginUser = async (req, res) => {
 
     const token = createToken(user._id, res);
 
-    res.status(200).json({ token });
+    res.status(200).json({ token, user_id: user._id });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "An error occurred during login" });
@@ -61,12 +66,13 @@ const getUsers = async (req, res) => {
 };
 const getProfile = async (req, res) => {
   try {
+    console.log("req:", req); // Log the req object for debugging
     const userId = getUserId(req);
-    console.log(userId);
+    console.log("userId:", userId); // Log the userId for debugging
     const user = await User.findById(userId).select("-password");
     res.json(user);
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: error.message });
   }
 };
 const deleteUser = async (req, res) => {
@@ -82,30 +88,31 @@ const deleteUser = async (req, res) => {
 };
 const updateUser = async (req, res) => {
   const { id } = req.params;
-  const { name, bio } = req.body;
+  const { firstname, lastname, email, phonenumber, password } = req.body;
 
   try {
     const user = await User.findById(id);
     if (!user) {
-      return res
-        .status(404)
-        .json({ message: "The user with the specified ID does not exist" });
+      return res.status(404).json({ message: "User not found" });
     }
-    if (!name || !bio) {
-      return res
-        .status(400)
-        .json({ message: "Please provide name and bio for the user" });
-    }
-    user.name = name;
-    user.bio = bio;
-    await user.save();
+    if (email !== user.email) {
+      const emailExist = await User.findOne({ email });
 
+      if (emailExist) {
+        return res.status(400).json({ message: "Email already exists" });
+      }
+    }
+    user.firstname = firstname || user.firstname;
+    user.lastname = lastname || user.lastname;
+    user.email = email || user.email;
+    user.phonenumber = phonenumber || user.phonenumber;
+    if (password) {
+      user.password = password;
+    }
+    await user.save();
     res.status(200).json(user);
   } catch (error) {
-    console.error(error);
-    res
-      .status(500)
-      .json({ message: "An error occurred while updating the user" });
+    res.status(500).json({ message: "Error updating user" });
   }
 };
 module.exports = {

@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 import Sell from "./components/pages/Sell";
 import Watches from "./components/pages/Watches";
 import ProtectedRoute from "./protectedRouter";
-import React from "react";
+import useAuth from "./components/Hooks/useAuth";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -31,29 +31,34 @@ class ErrorBoundary extends React.Component {
   }
 }
 function App() {
+  const auth = useAuth(); // Declare 'auth' with 'const'
+
   return (
     <div className="App">
-      <ErrorBoundary>
-        <BrowserRouter>
-          <Navbar />
-          <div className="pages">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route
-                path="/profile"
-                element={<ProtectedRoute element={<Profile />} />}
-              />
-              <Route
-                path="/sell"
-                element={<ProtectedRoute element={<Sell />} />}
-              />
-              <Route path="/watches" element={<Watches />} />
-            </Routes>
-          </div>
-        </BrowserRouter>
-      </ErrorBoundary>
+      <BrowserRouter>
+        <Navbar />
+        <div className="pages">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+
+            {/* Protected routes */}
+            {auth && (
+              <>
+                <Route
+                  path="/profile"
+                  element={<ProtectedRoute element={<Profile />} />}
+                />
+                <Route
+                  path="/sell"
+                  element={<ProtectedRoute element={<Sell />} />}
+                />
+              </>
+            )}
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

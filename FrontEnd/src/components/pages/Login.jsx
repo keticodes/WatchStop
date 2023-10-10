@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Input from "../Elements/input";
 import Button from "../Elements/button";
-import { GoogleLogin } from "react-google-login"; // Import Google Login component
 import useLogin from "../Hooks/useLogin";
 import { useNavigate } from "react-router-dom";
 import "../css/login.css";
@@ -38,13 +37,6 @@ const Login = () => {
             setValue={setPassword}
           />
           <Button text="LOGIN" />
-
-          {/* Google Login using react-google-login */}
-          <GoogleLogin
-            clientId="570931366977-ocsnkvamfsmpro5pm8hdo315pintncek.apps.googleusercontent.com"
-            buttonText="Login with Google"
-            cookiePolicy={"single_host_origin"}
-          />
         </div>
       </form>
     </div>

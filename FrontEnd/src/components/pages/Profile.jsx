@@ -1,22 +1,38 @@
-import React, { useState } from "react";
-import Input from "../Elements/input";
+import React, { useState, useEffect } from "react";
+import Input from "../Elements/readOnlyInput";
 import Button from "../Elements/button";
 import "../css/Profile.css";
-const Signup = () => {
-  // State variables for input values
+import useProfile from "../Hooks/useProfile";
+import useUpdate from "../Hooks/useUpdate";
+
+const Profile = () => {
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phonenumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
 
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const userData = await useProfile();
+        setFirstName(userData.firstname);
+        setLastName(userData.lastname);
+        setEmail(userData.email);
+        setPhoneNumber(userData.phonenumber);
+        setPassword(userData.password);
+      } catch (error) {
+        console.error("Error fetching user profile:", error.message);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPhoneNumber("");
+    useUpdate(firstname, lastname, email, phonenumber, password);
+    setPassword("");
   };
 
   return (
@@ -24,17 +40,33 @@ const Signup = () => {
       <h1>PROFILE</h1>
       <form onSubmit={handleSubmit} id="Profile-form">
         <div className="Profile-content">
-          <Input text="First-name" value={firstname} setValue={setFirstName} />
-          <Input text="Last-name" value={lastname} setValue={setLastName} />
-          <Input text="Email" value={email} setValue={setEmail} />
+          <Input
+            text="First-name"
+            type={"text"}
+            value={firstname}
+            setValue={setFirstName}
+          />
+          <Input
+            text="Last-name"
+            type={"text"}
+            value={lastname}
+            setValue={setLastName}
+          />
+          <Input
+            text="Email"
+            type={"email"}
+            value={email}
+            setValue={setEmail}
+          />
           <Input
             text="Phone-number"
+            type={"text"}
             value={phonenumber}
             setValue={setPhoneNumber}
           />
           <Input
             text="Password"
-            password={true}
+            type={"password"}
             value={password}
             setValue={setPassword}
           />
@@ -45,4 +77,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Profile;
