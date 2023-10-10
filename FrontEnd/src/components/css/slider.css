@@ -1,10 +1,10 @@
 .slider-wrapper {
   display: flex;
   justify-content: center;
-  margin: 2.5% 0%;
-  height: 81vh;
   align-items: center;
   width: 100%;
+  margin-bottom: 50px;
+  height: 87vh;
 }
 .slider-content-wrapper {
   display: flex;
@@ -31,4 +31,28 @@
 .slider-content h1 {
   text-align: center;
   max-width: 900px;
+}
+@media screen and (max-width: 600px) {
+  .slider-content img {
+    max-width: 400px;
+  }
+  .slider-content-wrapper button {
+    display: none;
+  }
+}
+@media screen and (max-width: 550px) {
+  .slider-content img {
+    max-width: 100%;
+  }
+  .slider-wrapper {
+    height: 700px;
+  }
+  .slider-content h1 {
+    font-size: 1.5em;
+  }
+}
+@media screen and (max-width: 400px) {
+  .slider-wrapper {
+    height: 600px;
+  }
 }

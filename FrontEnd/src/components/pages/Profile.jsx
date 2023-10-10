@@ -22,7 +22,7 @@ const Profile = () => {
         setPhoneNumber(userData.phonenumber);
         setPassword(userData.password);
       } catch (error) {
-        console.error("Error fetching user profile:", error.message);
+        console.error("Profile error");
       }
     };
 

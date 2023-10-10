@@ -16,7 +16,6 @@ const useUpdate = async (firstname, lastname, email, phonenumber, password) => {
 
   if (password) {
     requestBody.password = password;
-    console.log(password);
   }
 
   try {
@@ -28,7 +27,7 @@ const useUpdate = async (firstname, lastname, email, phonenumber, password) => {
       body: JSON.stringify(requestBody),
       credentials: "include",
     });
-    console.log("User profile updated", requestBody);
+    console.log("User profile updated");
   } catch (error) {
     throw new Error(`Error updating user profile: ${error.message}`);
   }

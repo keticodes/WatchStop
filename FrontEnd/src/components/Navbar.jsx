@@ -19,7 +19,6 @@ const Navbar = () => {
   const auth = useAuth();
 
   const showSidebar = () => {
-    console.log("Hamburger button clicked");
     setSidebar(!sidebar);
   };
   const handleLogout = () => {
