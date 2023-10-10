@@ -17,8 +17,6 @@ const useProfile = async () => {
     });
 
     const userData = await response.json();
-    console.log("User data:", userData);
-    console.log("");
     return userData;
   } catch (error) {
     throw new Error(`Error fetching user profile: ${error.message}`);

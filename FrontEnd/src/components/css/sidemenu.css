@@ -73,3 +73,14 @@
     transform: translate(0px, 0px);
   }
 }
+@keyframes widthAnimation {
+  to {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .nav-menu.active {
+    animation: widthAnimation 0.5s ease-in-out forwards;
+    border-top: 3px solid white;
+  }
+}

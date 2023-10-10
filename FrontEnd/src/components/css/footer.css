@@ -32,3 +32,24 @@ h3 {
   text-align: center;
   font-family: mulish;
 }
+
+@media screen and (max-width: 1000px) {
+  .footer-content-wrapper {
+    gap: 10%;
+    margin: 0px 50px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .footer-content-wrapper {
+    flex-direction: column;
+    left: 0px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .footer-title {
+    font-size: 1.25em;
+  }
+  .footer-content-wrapper h3 {
+    font-size: 1.12em;
+  }
+}

@@ -29,7 +29,7 @@ body {
   display: flex;
   justify-content: center;
   position: absolute;
-  width: 99vw;
+  width: 100%;
 }
 .Navbar-title h1 {
   color: black;
