@@ -29,10 +29,10 @@ const Login = () => {
       <form id="Login-form" onSubmit={handleSubmit}>
         <div className="Login-content">
           <h1>LOGIN</h1>
-          <Input text="Email" value={email} setValue={setEmail} />
+          <Input text="Email" value={email} setValue={setEmail} Type="email" />
           <Input
             text="Password"
-            password={true}
+            Type="password"
             value={password}
             setValue={setPassword}
           />

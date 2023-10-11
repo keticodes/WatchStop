@@ -41,19 +41,30 @@ const Signup = () => {
       <h1>REGISTER</h1>
       <form onSubmit={handleSubmit} id="Signup-form">
         <div className="Signup-content">
-          <Input text="First-name" value={firstname} setValue={setFirstName} />
-          <Input text="Last-name" value={lastname} setValue={setLastName} />
-          <Input text="Email" value={email} setValue={setEmail} />
+          <Input
+            text="First-name"
+            value={firstname}
+            setValue={setFirstName}
+            Type="text"
+          />
+          <Input
+            text="Last-name"
+            value={lastname}
+            setValue={setLastName}
+            Type="text"
+          />
+          <Input text="Email" value={email} setValue={setEmail} Type="email" />
           <Input
             text="Phone-number"
             value={phonenumber}
             setValue={setPhoneNumber}
           />
           <Input
-            text="Password"
+            text="password"
             password={true}
             value={password}
             setValue={setPassword}
+            Type="password"
           />
           <Button text="SIGNUP" type="submit" />
         </div>

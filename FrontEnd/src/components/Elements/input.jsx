@@ -1,10 +1,10 @@
-import { useState } from "react";
-import "../css/input.css";
-const Input = ({ text, password, value, setValue }) => {
+import React from "react";
+
+const Input = ({ text, password, value, setValue, Type }) => {
   return (
     <div className="input">
       <input
-        type={password ? "password" : "text"}
+        type={Type}
         id={password ? "passwordInput" : text}
         placeholder={text}
         value={value}

@@ -5,6 +5,7 @@
   border-radius: 6%;
   border: 3px solid rgba(158, 158, 158, 0.24);
   overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .image-container img {
@@ -48,4 +49,27 @@
   text-align: center;
   border-bottom: 3px solid rgba(158, 158, 158, 0.24);
   padding-bottom: 10px;
+  letter-spacing: 5px;
+  font-family: mulish;
+}
+@media screen and (max-width: 800px) {
+  .Watches {
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 570px) {
+  .Watches {
+    padding: 0px 25px;
+  }
+  .Watch {
+    width: 100%;
+  }
+  .image-container {
+    width: 100%;
+    border-radius: 1%;
+  }
+  .text-container {
+    width: 100%;
+    border-radius: 1%;
+  }
 }

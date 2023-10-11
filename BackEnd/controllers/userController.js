@@ -66,9 +66,7 @@ const getUsers = async (req, res) => {
 };
 const getProfile = async (req, res) => {
   try {
-    console.log("req:", req); // Log the req object for debugging
     const userId = getUserId(req);
-    console.log("userId:", userId); // Log the userId for debugging
     const user = await User.findById(userId).select("-password");
     res.json(user);
   } catch (error) {

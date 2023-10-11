@@ -44,6 +44,7 @@ const Sell = () => {
     setDescription("");
     setPrice("");
     setCity("");
+    setName("");
     setBannerUrl(CameraImage);
   };
 

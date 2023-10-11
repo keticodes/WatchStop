@@ -1,0 +1,16 @@
+::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
+  border-radius: 10px;
+}
+
+/* Handle (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+  /* Set the color of the handle */
+  background: #555;
+  border-radius: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888; /* Set the color of the handle when hovered */
+}
