@@ -7,6 +7,19 @@ const logger = require("./utils/logger");
 const config = require("./utils/config");
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUI = require("swagger-ui-express");
+const Grid = require("gridfs-stream");
+const conn = mongoose.connection;
+
+
+let gfs;
+
+// Create a GridFS stream and initialize it with your mongoose connection
+conn.once("open", () => {
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection("uploads"); // "uploads" is the name of the collection in your database where files will be stored
+});
+
+module.exports = { gfs }
 
 // Express app
 const app = express();
@@ -20,6 +33,18 @@ app.use((req, res, next) => {
   logger.info(req.path, req.method);
   next();
 });
+
+// gridfs
+app.get("/images/:id", (req, res) => {
+    gfs.files.findOne({ _id: mongoose.Types.ObjectId(req.params.id) }, (err, file) => {
+      if (!file || file.length === 0) {
+        return res.status(404).json({ error: "Image not found" });
+      }
+  
+      const readStream = gfs.createReadStream(file);
+      readStream.pipe(res);
+    });
+  });
 
 // Define Swagger options
 const swaggerDefinition = {

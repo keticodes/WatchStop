@@ -13,9 +13,8 @@ const watchSchema = new Schema(
       required: true,
     },
 
-    imageUrl: {
-      type: String,
-      required: true,
+    image: {
+      type: mongoose.Schema.Types.ObjectId,
     },
     price: {
       type: String,

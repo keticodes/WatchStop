@@ -1,22 +1,39 @@
 const Watches = require("../models/watchModel");
 const mongoose = require("mongoose");
+const { initializeGFS } = require("../server")
+
+let gfs;
+
+initializeGFS()
+  .then((initializedGFS) => {
+    gfs = initializedGFS;
 
 const createWatch = async (req, res) => {
-  const { name, description, imageUrl, price, city } = req.body;
+  const { name, description, price, city } = req.body;
   try {
-    if (!name || !imageUrl || !price || !description || !city) {
-      return res
-        .status(400)
-        .json({ error: "Please provide all required fields" });
+    if (!name || !price || !description || !city) {
+      return res.status(400).json({ error: "Please provide all required fields" });
     }
-    const watch = await Watches.create({
-      name,
-      description,
-      imageUrl,
-      price,
-      city,
+    const writeStream = gfs.createWriteStream({
+      filename: req.file.originalname, // Use the original filename as the image name
     });
-    res.status(201).json(watch);
+      // Create a new watch with the image ID from the GridFS file
+      const watch = new Watches({
+        name,
+        description,
+        imageId: file._id,
+        price,
+        city,
+      });
+      watch.save((err, watch) => {
+        if (err) {
+          return res.status(500).json({ error: "Unable to create the watch" });
+        }
+        res.status(201).json(watch);
+      });
+    });
+    writeStream.write(req.file.buffer);
+    writeStream.end();
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Unable to create the watch" });
@@ -95,3 +112,5 @@ module.exports = {
   getWatches,
   deleteWatch,
 };
+})
+
