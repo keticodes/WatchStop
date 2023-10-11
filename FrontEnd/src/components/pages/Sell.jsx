@@ -52,7 +52,7 @@ const Sell = () => {
     <div id="Sell-wrapper">
       <form id="Sell-form" onSubmit={handleSubmit}>
         <div className="Sellyourwatch">
-          <h1>Sell your Watch</h1>
+          <h1>Sell Your Watch</h1>
           <div className="image-upload">
             <button className="Banner-button" onClick={clickBannerButton}>
               {BannerImageUrl === CameraImage ? (
@@ -71,8 +71,8 @@ const Sell = () => {
                   alt=""
                   id="User-uploaded-photo"
                   style={{
-                    width: "100px",
-                    height: "100px",
+                    width: "200px",
+                    height: "125px",
                     border: "none",
                     objectFit: "cover",
                   }}
