@@ -9,7 +9,7 @@
   cursor: pointer;
   position: absolute;
   right: 0px;
-  bottom: -5px;
+  bottom: -9px;
 }
 .input input {
   border: none;
@@ -21,8 +21,7 @@
   border: 1px solid #116262;
 }
 .input input.readonly {
-  background-color: #f2f2f2; /* Set the background color for read-only input */
-  color: #777; /* Set the text color for read-only input */
-  cursor: not-allowed; /* Change the cursor style for read-only input */
-  /* Add any other styles you want for read-only input */
+  background-color: #f2f2f2;
+  color: #777;
+  cursor: not-allowed;
 }

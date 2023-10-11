@@ -25,6 +25,9 @@ const watchSchema = new Schema(
       type: String,
       required: true,
     },
+    id: {
+      type: Number,
+    },
   },
   { timestamps: true }
 );

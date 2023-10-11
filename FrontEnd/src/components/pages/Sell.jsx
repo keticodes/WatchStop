@@ -69,7 +69,12 @@ const Sell = () => {
                   src={BannerImageUrl}
                   alt=""
                   id="User-uploaded-photo"
-                  style={{ width: "100%", height: "100%", border: "none" }}
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                    border: "none",
+                    objectFit: "cover",
+                  }}
                 />
               )}
             </button>

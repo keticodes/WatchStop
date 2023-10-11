@@ -22,8 +22,8 @@ const Watches = () => {
     <div className="Watches-page">
       <h1>WATCHES</h1>
       <div className="Watches">
-        {watches.map((watch) => (
-          <div key={watch.id} className="Watch">
+        {watches.map((watch, index) => (
+          <div key={`${watch.id}-${index}`} className="Watch">
             <div className="image-container">
               <img src={watch.imageUrl} alt={watch.description} />
               <div className="text-container">

@@ -10,15 +10,15 @@ const Footer = () => {
       <div className="footer-content-wrapper">
         <div className="footer-content">
           <h3>CONTACT US</h3>
-          <p>Email: wriststop@mail.com</p>
-          <p>Phone: 444444444</p>
+          <p>Email: Placeholder@gmail.com</p>
+          <p>Phone: Placeholder</p>
           <p>Placeholder</p>
         </div>
         <div className="footer-content">
           <h3>ADDRESS</h3>
-          <p>1234 Wristshop Street</p>
-          <p>Placeholder</p>
-          <p>Placeholder</p>
+          <p>Placeholder: Placeholder</p>
+          <p>Placeholder: Placeholder</p>
+          <p>Placeholder: Placeholder</p>
         </div>
         <div className="footer-content">
           <h3>FOLLOW US</h3>
