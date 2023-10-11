@@ -8,11 +8,9 @@ const config = require("./utils/config");
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUI = require("swagger-ui-express");
 
-// Express app
 const app = express();
 app.use(cookieParser());
 
-// Middleware
 app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
 app.use(express.json());
 
@@ -21,7 +19,28 @@ app.use((req, res, next) => {
   next();
 });
 
-// Define Swagger options
+/**
+ * @swagger
+ * /watches:
+ *   get:
+ *     summary: Get a list of watches
+ *     description: Retrieve a list of watches from your API.
+ *     responses:
+ *       '200':
+ *         description: A JSON array of watches
+ */
+
+/**
+ * @swagger
+ * 
+ *   get:
+ *     summary: Get a list of users
+ *     description: Retrieve a list of users from your API.
+ *     responses:
+ *       '200':
+ *         description: A JSON array of users
+ */
+
 const swaggerDefinition = {
   openapi: '3.0.0',
   info: {
@@ -31,10 +50,9 @@ const swaggerDefinition = {
   },
 };
 
-// Options for the Swagger JSdoc
 const options = {
   swaggerDefinition,
-  apis: ['./routes/*.js'], // Replace with the path to your actual API route files
+  apis: ['./routes/*.js'],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
