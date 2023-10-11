@@ -55,7 +55,7 @@ const Navbar = () => {
       </div>
       <div className="Navbar-title">
         <Link to="/">
-          <h1>WATCHSTOP</h1>
+          <h1>WRISTSTOP</h1>
         </Link>
       </div>
       <div className="Navbar-text">

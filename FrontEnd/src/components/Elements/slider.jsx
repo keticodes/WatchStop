@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/slider.css";
+
 const Slider = ({ itemData }) => {
   const [current, setCurrent] = useState(0);
   const length = itemData.length;
 
-  const prevSlide = () => {
-    setCurrent(current === 0 ? length - 1 : current - 1);
-  };
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
+
+  const prevSlide = () => {
+    setCurrent(current === 0 ? length - 1 : current - 1);
+  };
+
+  const autoPlay = () => {
+    nextSlide();
+  };
+
+  useEffect(() => {
+    const timer = setInterval(autoPlay, 5000);
+
+    return () => clearInterval(timer);
+  }, [current]);
+
   return (
     <div className="slider-wrapper">
       {itemData.map((item, index) => {
@@ -45,4 +58,5 @@ const Slider = ({ itemData }) => {
     </div>
   );
 };
+
 export default Slider;

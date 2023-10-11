@@ -9,7 +9,6 @@ const Watches = () => {
     const fetchWatches = async () => {
       try {
         const watchesData = await useWatches();
-        console.log("Watches data:", watchesData);
         setWatches(watchesData);
       } catch (error) {
         console.error("Error fetching watches:", error);
@@ -25,11 +24,15 @@ const Watches = () => {
       <div className="Watches">
         {watches.map((watch) => (
           <div key={watch.id} className="Watch">
-            <img src={watch.imageUrl} alt={watch.description} />
-            <h3 className="Watch-info">{watch.name}</h3>
-            <h3 className="Watch-info">{watch.description}</h3>
-            <h3 className="Watch-info">{watch.city}</h3>
-            <h3 className="Watch-info">{watch.price}</h3>
+            <div className="image-container">
+              <img src={watch.imageUrl} alt={watch.description} />
+              <div className="text-container">
+                <h3 className="Watch-info">{watch.name}</h3>
+                <h3 className="Watch-info">{watch.description}</h3>
+                <h3 className="Watch-info">{watch.city}</h3>
+                <h3 className="Watch-info">{watch.price}</h3>
+              </div>
+            </div>
           </div>
         ))}
       </div>
