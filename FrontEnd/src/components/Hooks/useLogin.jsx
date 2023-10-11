@@ -17,7 +17,7 @@ const useLogin = async (userData) => {
       console.log("Login successful");
       return true;
     } else {
-      console.error("Login failed");
+      console.error("Invalid credentials");
       return false;
     }
   } catch (error) {

@@ -28,8 +28,8 @@ logger.info("connecting to", config.MONGO_URI);
 mongoose
   .connect(config.MONGO_URI)
   .then(() => {
-    logger.info("connected to db");
     console.log(config.MONGO_URI);
+    console.log("connected to DB");
   })
   .catch((error) => {
     logger.error(error);
