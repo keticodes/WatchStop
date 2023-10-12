@@ -1,5 +1,5 @@
 const useWatches = async () => {
-  const apiUrl = "http://localhost:3001/api/watches";
+  const apiUrl = process.env.HOST + "/api/watches";
   try {
     const response = await fetch(apiUrl, {
       method: "GET",
