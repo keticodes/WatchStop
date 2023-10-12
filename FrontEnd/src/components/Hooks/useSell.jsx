@@ -1,5 +1,5 @@
 const useSell = async (watchData) => {
-  const apiUrl = process.env.HOST + "/api/watches";
+  const apiUrl = "http://localhost:3001/api/watches";
   try {
     const response = await fetch(apiUrl, {
       method: "POST",

@@ -6,7 +6,7 @@ const useProfile = async () => {
   if (!token) {
     throw new Error("User token not found");
   }
-  const apiUrl = process.env.HOST + "/api/users/profile";
+  const apiUrl = "http://localhost:3001/api/users/profile";
   try {
     const response = await fetch(apiUrl, {
       method: "GET",

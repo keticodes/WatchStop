@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 
 const useSignup = async (userData) => {
-  const apiUrl = process.env.HOST + "/api/users";
+  const apiUrl = "http://localhost:3001/api/users";
   try {
     const response = await fetch(apiUrl, {
       method: "POST",
