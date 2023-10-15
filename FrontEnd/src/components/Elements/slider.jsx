@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/slider.css";
+import sliderLeft from "../../assets/slider-left.svg";
+import sliderRight from "../../assets/slider-right.svg";
 
 const Slider = ({ itemData }) => {
   const [current, setCurrent] = useState(0);
@@ -31,12 +33,7 @@ const Slider = ({ itemData }) => {
             {index === current && (
               <div className="slider-content-wrapper">
                 <button className="slider-prev" onClick={prevSlide}>
-                  <img
-                    src="../../src/assets/slider-left.svg"
-                    alt=""
-                    height="20px"
-                    width="20px"
-                  />
+                  <img src={sliderLeft} alt="" height="20px" width="20px" />
                 </button>
                 <div className="slider-content">
                   <h1>{item.text}</h1>
@@ -48,12 +45,7 @@ const Slider = ({ itemData }) => {
                   />
                 </div>
                 <button className="slider-next" onClick={nextSlide}>
-                  <img
-                    src="../../src/assets/slider-right.svg"
-                    alt=""
-                    height="20px"
-                    width="20px"
-                  />
+                  <img src={sliderRight} alt="" height="20px" width="20px" />
                 </button>
               </div>
             )}
