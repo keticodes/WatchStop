@@ -6,7 +6,7 @@ const useUpdate = async (firstname, lastname, email, phonenumber, password) => {
   if (!token) {
     throw new Error("User token not found");
   }
-  const apiUrl = "http://localhost:3001/api/users/" + userId;
+  const apiUrl = "https://watchstio.onrender.com/api/users/" + userId;
   const requestBody = {
     firstname: firstname,
     lastname: lastname,

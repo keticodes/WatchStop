@@ -1,5 +1,5 @@
 const useWatches = async () => {
-  const apiUrl = "http://localhost:3001/api/watches";
+  const apiUrl = "https://watchstio.onrender.com/api/watches";
   try {
     const response = await fetch(apiUrl, {
       method: "GET",
