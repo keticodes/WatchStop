@@ -11,7 +11,7 @@ const swaggerUI = require("swagger-ui-express");
 const app = express();
 app.use(cookieParser());
 
-app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
+app.use(cors({ credentials: true, origin: "https://watchstio.onrender.com" }));
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 
 /**
  * @swagger
- * 
+ *
  *   get:
  *     summary: Get a list of users
  *     description: Retrieve a list of users from your API.
@@ -42,22 +42,22 @@ app.use((req, res, next) => {
  */
 
 const swaggerDefinition = {
-  openapi: '3.0.0',
+  openapi: "3.0.0",
   info: {
-    title: 'Your API',
-    version: '1.0.0',
-    description: 'API documentation for your application',
+    title: "Your API",
+    version: "1.0.0",
+    description: "API documentation for your application",
   },
 };
 
 const options = {
   swaggerDefinition,
-  apis: ['./routes/*.js'],
+  apis: ["./routes/*.js"],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
 
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 app.use("/api/watches", require("./routes/watchRouter"));
 app.use("/api/users", require("./routes/userRouter"));
