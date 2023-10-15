@@ -11,7 +11,7 @@ const swaggerUI = require("swagger-ui-express");
 const app = express();
 app.use(cookieParser());
 
-app.use(cors({ credentials: true, origin: "https://watchstio.onrender.com" }));
+app.use(cors({ credentials: true, origin: "https://wristopfe.onrender.com/" }));
 app.use(express.json());
 
 app.use((req, res, next) => {
