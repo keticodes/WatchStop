@@ -16,7 +16,6 @@ const useProfile = async () => {
       credentials: "include",
     });
     const userData = await response.json();
-    console.log(userData);
     return userData;
   } catch (error) {
     throw new Error(`Error fetching user profile: ${error.message}`);
