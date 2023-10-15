@@ -40,7 +40,12 @@ const Slider = ({ itemData }) => {
                 </button>
                 <div className="slider-content">
                   <h1>{item.text}</h1>
-                  <img src={item.img} width={"500px"} alt="watch" />
+                  <img
+                    src={item.img}
+                    width={"500px"}
+                    height={"550px"}
+                    alt="watch"
+                  />
                 </div>
                 <button className="slider-next" onClick={nextSlide}>
                   <img
