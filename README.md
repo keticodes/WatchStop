@@ -1,7 +1,7 @@
 # WRISTSTOP
 ## Members: Keti Akseli Jesper Miro
 ## Website functinality
-Originally named WatchStop now " Wriststop " is a marketplace for selling and buying watches.
+Originally named WATCHSTOP now " WRISTSTOP " is a marketplace for selling and buying watches.
 
 ### Signup
 User is able to signup with
